@@ -4,30 +4,31 @@ console.log("El script se cargó");
 
 const cipher = cipherFactory();
 //función que se activa cuando la página se carga:
-window.onload = () => {   //este código se va a ejecutar si sólo si la página cargó (esto es un evento)
+window.onload = () => { //este código se va a ejecutar si sólo si la página cargó (esto es un evento)
     console.log("Holo, la página se cargó");
     const elBoton = document.getElementById("buttoncillo");
-    console.log("El botón es > "+elBoton);
-    let updateBoxes = ()=>{
-        console.log("Input > "+userInputBox.value);
-        if(elBoton.innerText == "CIFRAR"){
+    console.log("El botón es > " + elBoton);
+    let updateBoxes = () => {
+        console.log("Input > " + userInputBox.value);
+        if (elBoton.innerText == "CIFRAR") {
             result.value = cipher.encode(userInputBox.value);
-        }else{
+        } else {
             result.value = cipher.decode(userInputBox.value);
         }
     }
-    elBoton.addEventListener("click", ()=>{  //En HTML es onclick, aquí, sólo click.
-        console.log("¡Me hicieron click!");//S/Se ejecutará sólo si se hace la acción (hacer click)
-        if(elBoton.innerText == "CIFRAR"){   //innerText es el texto que está en cualquier etiqueta (por ej. el texto "CIFRAR" en:  <button id="buttoncillo">CIFRAR</button>)
+    elBoton.addEventListener("click", () => { //En HTML es onclick, aquí, sólo click.
+        console.log("¡Me hicieron click!"); //S/Se ejecutará sólo si se hace la acción (hacer click)
+        if (elBoton.innerText == "CIFRAR") { //innerText es el texto que está en cualquier etiqueta (por ej. el texto "CIFRAR" en:  <button id="buttoncillo">CIFRAR</button>)
             elBoton.innerText = "DESCIFRAR";
-        }else{
+        } else {
             elBoton.innerText = "CIFRAR";
         }
         updateBoxes();
     });
-    userInputBox.addEventListener("input", ()=>{
+    userInputBox.addEventListener("input", () => {
         updateBoxes();
     });
+    MouseEvent.initMouseEvent()
 };
 
 
